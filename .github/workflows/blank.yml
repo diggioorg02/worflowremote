@@ -13,7 +13,7 @@ jobs:
       - name: Output artifact URL
         run:  echo 'Artifact URL is ${{ github.event.client_payload.artifactURL }}'
 
-      - name: Trigger Workflow in Another Repository
+      - name: Download K6 Artifact
         run: |
           # Set the required variables
           repo_owner="diggioorg02" 
@@ -27,3 +27,6 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.PAT }}" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             $artifactURL
+
+      - name: Check K6 artifact
+        run: ls k6.zip && unzip k6.zip && ls -ilha
