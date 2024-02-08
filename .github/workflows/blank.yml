@@ -19,7 +19,7 @@ jobs:
           repo_owner="diggioorg02" 
           repo_name="worflowremote"  
           event_type="trigger-workflow"
-          artifactURL="${{ steps.artifact-k6-upload.outputs.artifact-url }}"
+          artifactURL="${{ github.event.client_payload.artifactURL }}"
   
           curl -L --output k6.zip \
             -X POST \
