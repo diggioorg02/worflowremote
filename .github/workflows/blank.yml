@@ -10,5 +10,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Output artifact URL
+        run:  echo 'Artifact URL is ${{ github.event.client_payload.artifactURL }}'
