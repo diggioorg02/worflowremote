@@ -29,4 +29,4 @@ jobs:
             "$artifactURL/zip"
 
       - name: Check K6 artifact
-        run: ls k6.zip && unzip k6.zip && ls -ilha
+        run: ls -ilha k6.zip
