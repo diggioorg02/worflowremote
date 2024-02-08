@@ -11,5 +11,3 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-        ref: ${{ github.event.client_payload.sha }}
