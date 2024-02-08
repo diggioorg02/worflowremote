@@ -3,6 +3,9 @@ name: My Target Workflow
 on:
   repository_dispatch:
     types: [trigger-workflow]
+    inputs:
+      artifactURL:
+        required: true
     
 jobs:
   build:
