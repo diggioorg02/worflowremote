@@ -1,4 +1,7 @@
 name: My Target Workflow
+run-name: >
+  Receiving Workflow from parent [${{
+    github.event.client_payload.distinct_id }}]
 
 on:
   repository_dispatch:
