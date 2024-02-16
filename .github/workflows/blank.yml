@@ -1,7 +1,5 @@
 name: My Target Workflow
-run-name: >
-  Receiving from Workflow parent runID ${{github.event.client_payload.distinct_id }}
-
+run-name: Receiving from Workflow parent runID ${{github.event.client_payload.distinct_id }}
 on:
   repository_dispatch:
     types: [trigger-workflow]
