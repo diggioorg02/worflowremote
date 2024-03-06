@@ -1,1 +1,33 @@
+name: My Target Workflow
+run-name: Receiving from Workflow parent runID ${{github.event.client_payload.distinct_id }}
+on:
+  repository_dispatch:
+    types: [trigger-multiworkflow]
 
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Output artifact URL
+        run:  echo 'Artifact URL is ${{ github.event.client_payload.artifactURL }}'
+
+      - name: sleep
+        run: sleep 10
+        
+      - name: numero pods
+        run: echo 'numeros de pod é ${{ github.event.client_payload.numpods }}'
+
+      - name: sleep
+        run: sleep 10
+        
+      - name: comando no pods
+        run: echo 'comando  no pods é ${{ github.event.client_payload.k6cmd }}'
+
+
+      - name: sleep
+        run: sleep 10
+        
+      - name: pod extra
+        run: echo 'cmd pod extra é ${{ github.event.client_payload.extrapodscmd }}'
