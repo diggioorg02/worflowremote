@@ -10,7 +10,8 @@ jobs:
     strategy:
       matrix:
         npod: ${{ github.event.client_payload.numpods }}
-        k6cmd: ${{ github.event.client_payload.k6cmd }}]
+        k6cmd: ${{ github.event.client_payload.k6cmd }}
+        
     runs-on: ubuntu-latest
 
     steps:
