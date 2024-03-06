@@ -6,7 +6,11 @@ on:
 
     
 jobs:
-  build:
+  k6onpod:
+    strategy:
+      matrix:
+        npod: ${{ github.event.client_payload.numpods }}
+        k6cmd: ${{ github.event.client_payload.k6cmd }}]
     runs-on: ubuntu-latest
 
     steps:
@@ -16,18 +20,5 @@ jobs:
       - name: sleep
         run: sleep 10
         
-      - name: numero pods
-        run: echo 'numeros de pod é ${{ github.event.client_payload.numpods }}'
-
-      - name: sleep
-        run: sleep 10
-        
-      - name: comando no pods
-        run: echo 'comando  no pods é ${{ github.event.client_payload.k6cmd }}'
-
-
-      - name: sleep
-        run: sleep 10
-        
-      - name: pod extra
-        run: echo 'cmd pod extra é ${{ github.event.client_payload.extrapodscmd }}'
+      - name: numero pod ${{ matrix.npod }}
+        run: echo 'k6 md no pod é ${{ matrix.k6cmd }}'
