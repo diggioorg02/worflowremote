@@ -1,4 +1,4 @@
-name: My Target Workflow
+name: My Target Multi Workflow
 run-name: Receiving from Workflow parent runID ${{github.event.client_payload.distinct_id }}
 on:
   repository_dispatch:
