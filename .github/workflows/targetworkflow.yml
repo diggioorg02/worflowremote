@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Output artifact URL
-        run:  echo 'Artifact URL is ${{ github.event.client_payload.artifactURL }}'
+      - name: IDs
+        run:  echo 'ID ${{ github.run_id }} origin ${{github.event.client_payload.distinct_id }} '
 
       - name: Download K6 Artifact
         run: |
@@ -31,7 +31,7 @@ jobs:
         run: file k6.zip
 
       - name: unzip K6 artifact
-        run: sleep 60
+        run: sleep 20
         
       - name: list K6 artifact
         run: ls -ilha .
