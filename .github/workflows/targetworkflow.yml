@@ -15,9 +15,24 @@ jobs:
 
       - name: "show payload ${{github.event.client_payload.k6cmd }}"
         run: |
-          echo "${{github.event.client_payload.zipfile }}"
           echo "${{github.event.client_payload.file }}"
   
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - uses: jannekem/run-python-script-action@v1
+        with:
+          script: |
+            import base64
+           
+            
+            fileziped = ${{github.event.client_payload.zipfile}}
+            print(fileziped)
+            dfileziped = base64.b64decode(fileziped)
+            print(dfileziped)
+            with open('k6.zip', 'wb') as f:
+               f.write(dfileziped)
+
 
       - name: Check K6 artifact
         run: file k6.zip
