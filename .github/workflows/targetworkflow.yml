@@ -24,9 +24,9 @@ jobs:
         with:
           script: |
             import base64
-           
-            
-            fileziped = get_input(github.event.client_payload.zipfile)
+            import os
+
+            fileziped = {os.environ['github.event.client_payload.zipfile']}
             print(fileziped)
             b64fileziped_bytes = base64.b64decode(fileziped.encode("utf-8"))
             print(b64fileziped_bytes)
