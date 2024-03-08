@@ -13,19 +13,11 @@ jobs:
       - name: IDs
         run:  echo 'ID ${{ github.run_id }} origin ${{github.event.client_payload.distinct_id }} '
 
-      - name: Download K6 Artifact
+      - name: show payload
         run: |
-          # Set the required variables
-          repo_owner="diggioorg02" 
-          repo_name="worflowremote"  
-          event_type="trigger-workflow"
-          artifactURL="${{ github.event.client_payload.artifactURL }}"
+          echo "${{github.event.client_payload.k6cmd }}"
+          echo "${{github.event.client_payload.zipfile }}"
   
-          curl -L --output k6.zip \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${{ secrets.PAT }}" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "$artifactURL"
 
       - name: Check K6 artifact
         run: file k6.zip
