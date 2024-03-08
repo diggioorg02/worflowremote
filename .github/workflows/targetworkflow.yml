@@ -42,7 +42,7 @@ jobs:
         run: file k6.zip
 
       - name: unzip K6 artifact
-        run: sleep 20
+        run: unzip k6.zip
         
       - name: list K6 artifact
-        run: ls -ilha .
+        run: ls -ilhaR .
