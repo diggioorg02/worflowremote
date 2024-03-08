@@ -17,6 +17,9 @@ jobs:
         run: |
           echo "${{github.event.client_payload.file }}"
   
+      - name: "Set env"
+        run: echo "GITHUB_FILEZIP=$(echo $github.event.client_payload.zipfile)" >> $GITHUB_ENV
+
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
@@ -26,7 +29,7 @@ jobs:
             import base64
             import os
 
-            fileziped = {os.environ['github.event.client_payload.zipfile']}
+            fileziped = os.environ['GITHUB_FILEZIP']
             print(fileziped)
             b64fileziped_bytes = base64.b64decode(fileziped.encode("utf-8"))
             print(b64fileziped_bytes)
