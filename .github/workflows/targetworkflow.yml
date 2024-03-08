@@ -13,9 +13,8 @@ jobs:
       - name: IDs
         run:  echo 'ID ${{ github.run_id }} origin ${{github.event.client_payload.distinct_id }} '
 
-      - name: show payload
+      - name: "show payload ${{github.event.client_payload.k6cmd }}"
         run: |
-          echo "${{github.event.client_payload.k6cmd }}"
           echo "${{github.event.client_payload.zipfile }}"
           echo "${{github.event.client_payload.file }}"
   
